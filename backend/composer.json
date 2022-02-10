@@ -3,11 +3,12 @@
     "description": "Projeto Desafio Leo: Backend.",
     "type": "project",
     "require": {
-        "monolog/monolog": "2.x-dev"
+        "monolog/monolog": "2.x-dev",
+        "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "src/app"
+            "app\\": "src/app/"
         }
     },
     "authors": [

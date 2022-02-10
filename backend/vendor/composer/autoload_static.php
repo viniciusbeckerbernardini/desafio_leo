@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit3730a6e00851f58e16c14bd5957f2682
 {
     public static $prefixLengthsPsr4 = array (
-        'V' => 
-        array (
-            'Viniciusbeckerbernardini\\DesafioLeoBackend\\' => 43,
-        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -19,13 +15,13 @@ class ComposerStaticInit3730a6e00851f58e16c14bd5957f2682
         array (
             'Monolog\\' => 8,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Viniciusbeckerbernardini\\DesafioLeoBackend\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -33,6 +29,10 @@ class ComposerStaticInit3730a6e00851f58e16c14bd5957f2682
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/app',
         ),
     );
 
