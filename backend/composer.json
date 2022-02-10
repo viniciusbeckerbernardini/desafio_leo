@@ -1,0 +1,20 @@
+{
+    "name": "viniciusbeckerbernardini/desafio_leo_backend",
+    "description": "Projeto Desafio Leo: Backend.",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "2.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "src/app"
+        }
+    },
+    "authors": [
+        {
+            "name": "viniciusbeckerbernardini",
+            "email": "vbkmma@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
