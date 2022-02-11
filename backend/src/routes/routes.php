@@ -15,7 +15,7 @@ function router()
     $uri = $_SERVER['REQUEST_URI'];
     $method = $_SERVER['REQUEST_METHOD'];
     $coursesController = new CourseController();
-
+    header('Access-Control-Allow-Origin: *');
     if ($method == "GET")
     {
         switch ($uri) {
