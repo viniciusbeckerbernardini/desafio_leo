@@ -3,22 +3,18 @@
 namespace app\DAO;
 
 
-use app\Model\Course;
-
 class CourseDAO{
 
     private \PDO $connection;
-    private Course $course;
 
     public function __construct()
     {
-        $this->connection = new \PDO('mysql:host=localhost;dbname=leo_challenge','vinicius','vinicius');
+        $this->connection = new \PDO('mysql:host=localhost;dbname=desafio_leo','root','root123456');
     }
 
     public function __destruct()
     {
         unset($this->connection);
-        unset($this->course);
     }
 
 
@@ -40,25 +36,22 @@ class CourseDAO{
     public function create(
         string $name,
         string $description,
-        string $backgroundImage,
-        string $redirectionURL
+        string $redirectionURL,
+        string $backgroundImage
     ):?string {
 
-        $statement = $this->connection->prepare(`
-        INSERT INTO course (name, description, backgroundImage, redirectionUrl)
-        VALUES (:name, :description, :backgroundImage, :redirectionUrl)
-        `);
+        $statement = $this->connection->prepare("INSERT INTO course (name, description, backgroundImage, redirectionUrl) VALUES (:name, :description, :backgroundImage, :redirectionUrl)");
 
         $statement->bindParam(':name',$name);
         $statement->bindParam(':description',$description);
         $statement->bindParam(':backgroundImage',$backgroundImage);
         $statement->bindParam(':redirectionUrl',$redirectionURL);
 
-        $statement->execute();
-
-        $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
-
-        return json_encode($data);
+        if($statement->execute()){
+            return json_encode(['message'=>'course created']);
+        }
+        var_dump($statement->errorInfo());
+        throw new \Exception('Error: course not created properly',500);
     }
 
     public function update(
@@ -68,34 +61,38 @@ class CourseDAO{
         string $backgroundImage,
         string $redirectionURL
     ):?string {
-        $statement = $this->connection->prepare(`
+        if($backgroundImage == ''){
+            $statement = $this->connection->prepare("
+        UPDATE course SET name = :name, description = :description, redirectionUrl = :redirectionUrl
+        WHERE id = :id
+        ");
+        }else {
+            $statement = $this->connection->prepare("
         UPDATE course SET name = :name, description = :description, backgroundImage = :backgroundImage, redirectionUrl = :redirectionUrl
         WHERE id = :id
-        `);
+        ");
+        }
         $statement->bindParam(':id',$id);
         $statement->bindParam(':name',$name);
         $statement->bindParam(':description',$description);
         $statement->bindParam(':backgroundImage',$backgroundImage);
         $statement->bindParam(':redirectionUrl',$redirectionURL);
 
-        $statement->execute();
-
-        $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
-
-        return json_encode($data);
+        if($statement->execute()){
+            return json_encode(['message'=>'course updated']);
+        }
+        throw new \Exception('Error: course not updated properly',500);
     }
 
-    public function delete($id):bool {
-        $statement = $this->connection->prepare(`
-        DELETE from course id = :id
-        `);
+    public function delete($id):string {
+        $statement = $this->connection->prepare("DELETE from course WHERE id = :id");
         $statement->bindParam(':id',$id);
 
         if($statement->execute()){
-            return true;
+            return json_encode(['message'=>'course deleted']);
         }
 
-        return false;
+        throw new \Exception('Error: course not deleted properly',500);
     }
 
 

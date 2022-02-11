@@ -14,14 +14,16 @@ class Course{
     public function __construct(
         string $name = "",
         string $description = "",
+        string $redirectionURL = "",
         string $backgroundImage = "",
-        string $redirectionURL = ""
+        int $id = 0
     )
     {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setBackgroundImage($backgroundImage);
         $this->setRedirectionURL($redirectionURL);
+        $this->setBackgroundImage($backgroundImage);
+        $this->setId($id);
     }
 
     /**
@@ -35,7 +37,7 @@ class Course{
     /**
      * @param int $id
      */
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -102,6 +104,24 @@ class Course{
     public function setRedirectionURL(string $redirectionURL): void
     {
         $this->redirectionURL = $redirectionURL;
+    }
+
+    public static function moveBackgroundImage(string $filename): ?string
+    {
+        $file = $_FILES[$filename];
+        if($file["error"]){
+            throw new Exception("Erro no envio do arquivo. Erro: ".$file["error"]);
+        }
+        $dirUpload = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR."/public/images/uploads";
+        if(!is_dir($dirUpload)){
+            mkdir($dirUpload);
+        }
+        if(move_uploaded_file($file["tmp_name"], $dirUpload.DIRECTORY_SEPARATOR.$file["name"])){
+            return $dirUpload.DIRECTORY_SEPARATOR.$file["name"];
+        }else{
+            throw new \Exception("Erro no upload");
+
+        }
     }
 
 
