@@ -71,11 +71,11 @@ class CourseDAO{
         UPDATE course SET name = :name, description = :description, backgroundImage = :backgroundImage, redirectionUrl = :redirectionUrl
         WHERE id = :id
         ");
+            $statement->bindParam(':backgroundImage',$backgroundImage);
         }
         $statement->bindParam(':id',$id);
         $statement->bindParam(':name',$name);
         $statement->bindParam(':description',$description);
-        $statement->bindParam(':backgroundImage',$backgroundImage);
         $statement->bindParam(':redirectionUrl',$redirectionURL);
 
         if($statement->execute()){
