@@ -52,8 +52,8 @@ class CourseController
             $createdCourse = $this->courseDAO->create(
                 $course->getName(),
                 $course->getDescription(),
-                $course->getBackgroundImage(),
-                $course->getRedirectionURL()
+                $course->getRedirectionURL(),
+                $course->getBackgroundImage()
             );
 
             echo $createdCourse;

@@ -49,8 +49,8 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div class="swiper-text">
-							<h3>Texto Teste</h3>
-							<p>iLorem ipsum dolor sit amet, consectetur adipiscing elit. 
+							<h3>Slide 1</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 								Morbi gravida nec urna sit amet vehicula. 
 								Cras feugiat risus lectus, non vulputate dui aliquet in. 
 							</p>
@@ -58,12 +58,19 @@
 						<img src="./img/slide-1.jpg" alt="">
 					</div>
 					<div class="swiper-slide">
+						<div class="swiper-text">
+							<h3>Slide 2</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+								Morbi gravida nec urna sit amet vehicula. 
+								Cras feugiat risus lectus, non vulputate dui aliquet in. 
+							</p>
+						</div>
 						<img src="./img/slide-2.jpg" alt="">
 					</div>
 					<div class="swiper-slide">
 						<div class="swiper-text">
-							<h3>Texto Teste 02</h3>
-							<p>iLorem ipsum dolor sit amet, consectetur adipiscing elit. 
+							<h3>Slide 3</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 								Morbi gravida nec urna sit amet vehicula. 
 								Cras feugiat risus lectus, non vulputate dui aliquet in. 
 							</p>
@@ -160,13 +167,13 @@
 				&#10006;
 			</button>
 			<div class="modal-content">	
-				<form action="action_page.php" class="form_course">
+				<div class="form_course">
 					<div class="row">
 						<div class="col-100">
-							<label for="couse_img">
+							<label for="backgroundImageUrl">
 								Imagem do curso
 							</label>
-							<input type="file" name="couse_img" id="couse_img" onchange="previewFile()">
+							<input type="file" name="backgroundImageUrl" id="backgroundImageUrl" onchange="previewFile()">
 						</div>
 						<div class="row">
 							<div class="col-100">
@@ -180,37 +187,56 @@
 					</div>
 					<div class="row">
 					  	<div class="col-25">
-							<label for="nome">Nome do curso: </label>
+							<label for="name">Nome do curso: </label>
 					  	</div>
 					  	<div class="col-75">
-							<input type="text" id="nomeCurso" name="nomeCurso" placeholder="Seu nome..">
-					  	</div>
-					</div>
-					<div class="row">
-					  	<div class="col-25">
-							<label for="novo">Inserir marcação curso novo:</label>
-					  	</div>
-					  	<div class="col-75">
-							<select id="novo" name="novo">
-								<option value="no">Não</option>
-								<option value="yes">Sim</option>
-							</select>
+							<input type="text" id="name" name="name" placeholder="Seu nome..">
 					  	</div>
 					</div>
 					<div class="row">
 						<div class="col-25">
-							<label for="info">Descrição do curso</label>
+							<label for="name">URL do curso: </label>
+					  	</div>
+						<div class="col-75">
+					  		<input type="text" id="redirectionUrl" name="redirectionUrl" placeholder="URL Curso">
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="col-25">
+							<label for="description">Descrição do curso</label>
 						</div>
 						<div class="col-75">
-							<textarea id="info" name="info" placeholder="Descreva.." style="height:200px"></textarea>
+							<textarea id="description" name="description" placeholder="Descreva.." style="height:200px"></textarea>
 						</div>
 					</div>
 					<div class="row">
-					  	<input id='createCourse' type="submit" value="Enviar">
+					  	<button id='createCourse' onclick="createCourse()">Enviar</button>
+					  	<button id='updateCourse' onclick="updateCourse()">Atualizar</button>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
+	</div>
+	<!-- GET COURSE -->
+	<div id="modal-get-course" class="modal">	
+		<div class="modal-base">	
+			<button class="close-modal" onclick="closeModal('modal-get-course')">
+				&#10006;
+			</button>
+			<div class="modal-content" id="modal-get-course-content">	
+				<div class="modal-img-presentation">
+					<img src="./img/modal-presentation.jpg" alt="course image">
+				</div>
+				<div class="modal-briefing">
+					<h2>Lorem ipsum</h2>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Dignissimos cupiditate quia quae neque officia, temporibus totam consectetur adipisci, omnis enim commodi fugiat reiciendis odio dolorum est suscipit consequatur amet laudantium?</p>
+				</div>
+				<div class="modal-button">
+					<button class="btn-modal" onclick="closeModal('modal-presentation');openModal('modal-inscricao');">
+						INSCREVA-SE
+					</button>
+				</div>
+			</div>
 	</div>
 </body>
 </html>

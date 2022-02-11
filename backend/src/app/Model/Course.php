@@ -117,7 +117,7 @@ class Course{
             mkdir($dirUpload);
         }
         if(move_uploaded_file($file["tmp_name"], $dirUpload.DIRECTORY_SEPARATOR.$file["name"])){
-            return $dirUpload.DIRECTORY_SEPARATOR.$file["name"];
+            return 'http://'.$_SERVER['HTTP_HOST']."/public/images/uploads/".$file["name"];
         }else{
             throw new \Exception("Erro no upload");
 
