@@ -105,7 +105,7 @@ function createCourse(){
 function updateCourse(id){
   var request = new XMLHttpRequest();
 
-  request.open('POST','http://localhost:9001/api/courses/update?id='+id);
+  request.open('POST','http://localhost:9001/api/courses/edit?id='+id);
 
   request.onload = function(){
     if(request.status >= 200 && request.status <400){
@@ -173,8 +173,7 @@ function openModalUpdateCourse(id){
       document.getElementById('redirectionUrl').value = course.redirectionUrl
 
       document.getElementById('createCourse').style.display = 'none';      
-      document.getElementById('updateCourse').style.display = 'block';      
-      document.getElementById('updateCourse').onclick = updateCourse(id);      
+      document.getElementById('createCourse').insertAdjacentHTML('afterend',`<button id='updateCourse' onclick="updateCourse(${id})">Atualizar</button>`)      
 
       openModal('modal-add-course');
 
