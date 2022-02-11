@@ -36,7 +36,7 @@ Atenção!
 O Desenvolvimento deve ser feito com PHP puro, sem uso de frameworks.
 
 <h3>Prazo<h3>
-O prazo é de 7 dias à partir da data de recebimento. <strong>(18/10/2021)</strong>
+O prazo é de 7 dias à partir da data de recebimento </strong>
 
 <h3>Dúvidas</h3>
 Pelo e-mail plataforma@leolearning.com, com o assunto [Desafio LEO] - Dúvidas.
